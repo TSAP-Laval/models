@@ -15,3 +15,9 @@ type JoueurPositionPartie struct {
 	Equipe     Equipe
 	EquipeID   int
 }
+
+// Expand effectue un fetch de tous les children de la
+// JoueurPositionPartie
+func (j *JoueurPositionPartie) Expand(db *gorm.DB) {
+	db.Model(j).Related(&(j.Position))
+}
