@@ -24,6 +24,7 @@ type Partie struct {
 // (has-many, has-one, pas belongs-to)
 func (p *Partie) Expand(db *gorm.DB) {
 	db.Model(p).Related(&(p.Actions))
+	db.Model(p).Related(&(p.Lieu))
 	db.Model(p).Related(&(p.EquipeMaison), "EquipeMaisonID")
 	db.Model(p).Related(&(p.EquipeAdverse), "EquipeAdverseID")
 }
